@@ -5,7 +5,11 @@ class SOLITAIRE:
         #self.name = name
         self.already_assigned_cards = []
         self.playing_field = self.generate_playingfield()
+        self.hidden_pile = [] #Ziehstapel
+        self.draw_pile_with_assigned_cards = [] #Ablagestapel
+        self.foundation = {} #Endstapel
         print(self.playing_field)
+        print(self.already_assigned_cards)
     
     def generate_playingfield(self):
         playing_field = np.zeros((13, 7), dtype=object)
@@ -23,5 +27,14 @@ class SOLITAIRE:
 
         return playing_field   
     
-
+    def click_on_draw_pile(self):
+        
+    def generate_hidden_pile(self):
+        for i in range(24):   
+            random_number = random.randint(1,52)
+            while random_number in self.already_assigned_cards:
+                random_number = random.randint(1, 52)
+            self.already_assigned_cards.append(random_number)   
+            self.hidden_pile.append(random_number)
+        return self.hidden_pile
 Test = SOLITAIRE()
