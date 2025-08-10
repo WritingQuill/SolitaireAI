@@ -9,7 +9,8 @@ class SOLITAIRE:
         self.draw_pile_with_assigned_cards = [] #Ablagestapel
         self.drawn_card= 0
         self.foundation = {} #Endstapel
-   
+        self.cards = self.generate_cards()
+        #print(self.cards)
     
     def generate_playingfield(self):
         playing_field = np.zeros((13, 7), dtype=object)
@@ -27,7 +28,18 @@ class SOLITAIRE:
 
         return playing_field   
     
-        
+    def generate_cards(self):   
+        cards = {}
+        for i in range(1,14):
+            cards[i] = ["Hearts",i]
+        for i in range(14,27):
+            cards[i] = ["Diamonds",i-13]
+        for i in range(27,40):
+            cards[i] = ["Clubs",i-26]
+        for i in range(40,53):
+            cards[i] = ["Spades",i-39]
+        return cards
+
     def generate_hidden_pile(self):
         hidden_pile = []
         for i in range(24):   
@@ -49,5 +61,12 @@ class SOLITAIRE:
                 drawn_card = self.hidden_pile[0]
         self.drawn_card = drawn_card
         return 
+
+    def selecht_card(self):
+
+
+
+        return 
+
 
 Test = SOLITAIRE()
