@@ -24,7 +24,7 @@ class SOLITAIRE:
         for i in range(13):
             for j in range(7):
                 if j> i:
-                    playing_field[i][j] = "U"
+                    playing_field[i][j] = "x"
 
         return playing_field   
     
@@ -62,11 +62,17 @@ class SOLITAIRE:
         self.drawn_card = drawn_card
         return 
 
-    def selecht_card(self):
-
-
-
-        return 
+    def move_drawn_card_to_position(self,j):
+        previous_card = 0
+        index = 0
+        for i in range(13):
+            if self.playing_field[i][j] != "x" and self.playing_field[i][j]!= 0:
+                previous_card  = self.playing_field[i][j]
+                index = i
+        #CHECK FUNCTION!!!!!
+        self.playing_field[index+1][j] = self.drawn_card
+        self.drawn_card = 0
+        return
 
 
 Test = SOLITAIRE()
