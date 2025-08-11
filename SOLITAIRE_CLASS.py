@@ -31,13 +31,13 @@ class SOLITAIRE:
     def generate_cards(self):   
         cards = {}
         for i in range(1,14):
-            cards[i] = ["Hearts",i]
+            cards[i] = ["Hearts",i,"red"]
         for i in range(14,27):
-            cards[i] = ["Diamonds",i-13]
+            cards[i] = ["Diamonds",i-13,"red"]
         for i in range(27,40):
-            cards[i] = ["Clubs",i-26]
+            cards[i] = ["Clubs",i-26,"black"]
         for i in range(40,53):
-            cards[i] = ["Spades",i-39]
+            cards[i] = ["Spades",i-39,"black"]
         return cards
 
     def generate_hidden_pile(self):
@@ -92,7 +92,7 @@ class SOLITAIRE:
                 #CHECK FUNCTION!!!!!
         previous_card = self.playing_field[index-1][j]
         selected_card = selected_cards[0]
-        if self.check_move(previous_card, selected_card):
+        if self.check_move_on_playing_field(previous_card, selected_card):
             for card in selected_cards:
                 self.playing_field[index][j] = card
                 index += 1
@@ -103,9 +103,15 @@ class SOLITAIRE:
 
 
 
-    def check_move(self, previous_card, drawn_card):
+    def check_move_on_playing_field(self, previous_card, current_card):
+        previous_card_information = self.cards[previous_card]
+        current_card_information = self.cards[current_card]
         
-
-        return
+        if previous_card_information[1] - current_card_information[1] == 1:
+             if previous_card_information[2] != current_card_information[2]:  # Different colors
+                return True
+        else:
+            print("Invalid move: Same suit")
+            return False
         
 Test = SOLITAIRE()
