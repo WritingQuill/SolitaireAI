@@ -74,5 +74,38 @@ class SOLITAIRE:
         self.drawn_card = 0
         return
 
+    def select_cards_from_playing_field(self,i, j):   
+        selected_cards = []
+        while i in range(13-i):
+            if self.playing_field[i][j] != 0:
+                selected_cards.append(self.playing_field[i][j])
+                if self.playing_field[i][j] != "x":
+                    self.playing_field[i][j] = 0
+        selected_cards = [item for item in selected_cards if item != "x"]
+        return selected_cards
+    
+    def move_selected_cards_on_playing_field(self,selected_cards, j):
+        index = 0
+        for i in range(13):
+            if self.playing_field[i][j] != 0:
+                index = i
+                #CHECK FUNCTION!!!!!
+        previous_card = self.playing_field[index-1][j]
+        selected_card = selected_cards[0]
+        if self.check_move(previous_card, selected_card):
+            for card in selected_cards:
+                self.playing_field[index][j] = card
+                index += 1
+        else:
+            print("Invalid move")
+        return
 
+
+
+
+    def check_move(self, previous_card, drawn_card):
+        
+
+        return
+        
 Test = SOLITAIRE()
